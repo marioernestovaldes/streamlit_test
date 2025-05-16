@@ -7,17 +7,20 @@ import pandas as pd
 # Model and Scaler Loaders
 # ------------------------
 
+
 @st.cache_resource
 def load_model():
     """Load the trained machine learning model from disk."""
     with open("model.pkl", "rb") as f:
         return pickle.load(f)
 
+
 @st.cache_resource
 def load_scaler():
     """Load the fitted scaler from disk."""
     with open("scaler.pkl", "rb") as f:
         return pickle.load(f)
+
 
 model = load_model()
 scaler = load_scaler()
