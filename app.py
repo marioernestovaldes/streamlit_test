@@ -3,6 +3,7 @@ import numpy as np
 import pickle
 import pandas as pd
 
+
 # ------------------------
 # Imputer, Scaler and Model Loaders
 # ------------------------
@@ -19,6 +20,7 @@ def load_scaler():
     """Load the fitted scaler from disk."""
     with open("scaler.pkl", "rb") as f:
         return pickle.load(f)
+
 
 @st.cache_resource
 def load_model():
@@ -121,6 +123,7 @@ if predict:
     st.write("### Risk Indicator")
     st.success(f"Estimated 30-day mortality risk: {proba * 100:.1f}%")
 
+
     def risk_color(prob):
         if prob < 0.33:
             return "#65c18c"  # Green
@@ -128,6 +131,7 @@ if predict:
             return "#FFD700"  # Yellow
         else:
             return "#ff4b4b"  # Red
+
 
     bar_color = risk_color(proba)
     st.markdown(f"""
